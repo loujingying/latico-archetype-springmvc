@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.latico.archetype.springmvc</groupId>
+    <artifactId>latico-springmvc-archetype</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>latico-springmvc-archetype</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
+    <!--邮件管理列表-->
+    <mailingLists>
+        <mailingList>
+            <name>Development List</name>
+            <subscribe>dev-subscribe@gdlaticosoft.com</subscribe>
+            <unsubscribe>dev-unsubscribe@gdlaticosoft.com</unsubscribe>
+            <post>dev@gdlaticosoft.com</post>
+        </mailingList>
+    </mailingLists>
+
+    <!--开发者-->
+    <developers>
+        <developer>
+            <id>developer-name</id>
+            <name>developer-name</name>
+            <url>developer-name@gdlaticosoft.com</url>
+        </developer>
+    </developers>
+
+    <!--许可证-->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!--组织机构-->
+    <organization>
+        <name>laticosoft</name>
+        <url>http://www.gdlaticosoft.com/</url>
+    </organization>
+
+    <!--项目名称和URL-->
+    <issueManagement>
+        <!--项目名字，-->
+        <system>latico-springmvc-archetype</system>
+        <!--该项目使用的URL-->
+        <url>https://localhost:8080/latico-springmvc-archetype</url>
+    </issueManagement>
+
+    <!--软件配置管理（SCM：Software Configuration Management）功能-->
+    <scm>
+        <url>http://gitlab.gdlaticosoft.com:7111/common/latico-springmvc-archetype.git</url>
+        <!--<connection>scm:svn:http://gitlab.gdlaticosoft.com:7111/common/latico-commons.git</connection>-->
+        <connection>scm:git:http://gitlab.gdlaticosoft.com:7111/common/latico-springmvc-archetype.git</connection>
+    </scm>
+
+    <!--项目持续集成信息-->
+    <ciManagement>
+        <!--持续集成系统的名字，例如continuum-->
+        <system>jenkins</system>
+        <!--该项目使用的持续集成系统的URL（如果持续集成系统有web接口的话）。-->
+        <url>https://localhost:8080/jenkins</url>
+    </ciManagement>
+
+    <!--发布管理，发布到私服地址-->
+    <distributionManagement>
+        <!-- 私服地址 ，公司级基线仓库 -->
+        <repository>
+            <id>Releases</id>
+            <url>http://172.168.10.100:8081/nexus/content/repositories/releases</url>
+        </repository>
+
+        <!-- 私服地址 ，公司级快照仓库 -->
+        <snapshotRepository>
+            <id>Snapshots</id>
+            <url>http://172.168.10.100:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- 版本和变量统一管理 -->
+    <properties>
+        <!-- JDK版本配置 -->
+        <java.version>1.8</java.version>
+        <!-- JDK版本配置 -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- 项目编码配置 -->
+        <project.encoding>UTF-8</project.encoding>
+        <!-- 文件拷贝时的编码 -->
+        <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+        <!-- 编译时的编码 -->
+        <maven.compiler.encoding>${project.encoding}</maven.compiler.encoding>
+
+        <!--跳过单元测试-->
+        <skipTests>true</skipTests>
+        <!--取消webxml的依赖，非必须的-->
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        <!--解决控制台乱码问题-->
+        <argLine>-Dfile.encoding=UTF-8</argLine>
+
+        <!-- build的时候设置的时间格式, 可用于生成文件名等 -->
+        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+
+        <!-- logback版本配置 -->
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <janino.version>3.0.11</janino.version>
+        <swagger.version>2.6.1</swagger.version>
+        <feign.version>10.2.0</feign.version>
+        <springmvc.version>4.3.22.RELEASE</springmvc.version>
+    </properties>
+
+    <!-- 打包配置 -->
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>
+                        **/*.java
+                    </exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- 打源码包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Compile -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <encoding>${project.encoding}</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!--打包骨架插件，有bug(模块中不能含有名称为config的文件夹)-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <encoding>${project.encoding}</encoding>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <!--依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <!--导入spring的父级依赖-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${springmvc.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 共用依赖 -->
+    <dependencies>
+
+        <!-- 单元测试开始-->
+        <!--统一测试包-->
+        <dependency>
+            <groupId>com.latico.commons</groupId>
+            <artifactId>latico-commons-test</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 单元测试结束-->
+
+        <!--servlet容器使用-->
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- logback -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!-- logback condition -->
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>${janino.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>commons-compiler</artifactId>
+            <version>${janino.version}</version>
+        </dependency>
+        <!-- logback -->
+
+        <!--slf4j+log4j2-->
+        <!--排除掉common-logging使用slf4j-->
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!--使用log4j2作为实现日志-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <!--公共包系列-->
+        <dependency>
+            <groupId>com.latico.commons</groupId>
+            <artifactId>latico-commons-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.latico.commons</groupId>
+            <artifactId>latico-commons-spring</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.latico.commons</groupId>
+            <artifactId>latico-commons-orm-mybatis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.latico.commons</groupId>
+            <artifactId>latico-commons-feign</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--公共包系列-->
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>12.1.0.1</version>
+        </dependency>
+        <!--数据源-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.12</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!--json工具-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.7</version>
+        </dependency>
+
+        <!--mybatis的分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.8</version>
+        </dependency>
+        <!--分页工具-->
+
+        <!--模板框架-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
+        <!--模板框架-->
+
+    </dependencies>
+</project>
