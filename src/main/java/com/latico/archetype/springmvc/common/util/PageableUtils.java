@@ -5,7 +5,7 @@ package com.latico.archetype.springmvc.common.util;
  * spring data jpa的分页工具
  * </PRE>
  *
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-06-13 9:59
  * @Version: 1.0
  */

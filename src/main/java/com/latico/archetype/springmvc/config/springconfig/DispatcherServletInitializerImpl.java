@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
  * <PRE>
  *  初始化 分发器/前端控制器 DispatcherServlet
  * </PRE>
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-27 17:43:55
  * @Version: 1.0
  */

@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * 为了实现组件自动扫描和实例化并注入到容器中，我们要在配置类中加上@ComponnetScan注解，并设定扫描的包的范围。
  * </PRE>
  *
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-27 22:19:25
  * @Version: 1.0
  */

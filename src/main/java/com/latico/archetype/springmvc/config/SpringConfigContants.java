@@ -5,7 +5,7 @@ package com.latico.archetype.springmvc.config;
  * 配置常量，包路径配置，启动扫描需要用到
  * </PRE>
  *
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-30 16:01
  * @Version: 1.0
  */

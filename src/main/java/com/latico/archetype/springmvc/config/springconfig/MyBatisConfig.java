@@ -5,7 +5,7 @@ package com.latico.archetype.springmvc.config.springconfig;
  *
  * </PRE>
  *
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-30 14:34
  * @Version: 1.0
  */
@@ -29,7 +29,7 @@ import java.util.Properties;
  * <PRE>
  *  mybatis配置
  * </PRE>
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-30 16:00:02
  * @Version: 1.0
  */

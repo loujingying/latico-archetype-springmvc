@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * 数据源配置
  * </PRE>
  *
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-29 17:51
  * @Version: 1.0
  */

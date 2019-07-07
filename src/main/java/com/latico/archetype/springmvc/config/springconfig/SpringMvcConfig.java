@@ -21,7 +21,7 @@ import java.util.List;
  通过@EnableWebMvc来导入Spring MVC的相关配置，通过@ComponentScan来自动扫描控制器类HomeController所在的包。
  同样，@Configuration用来说明这个是配置类用来替换原来的xml
  * </PRE>
- * @Author: LanDingDong
+ * @Author: latico
  * @Date: 2019-03-27 22:22:20
  * @Version: 1.0
  */
